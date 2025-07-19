@@ -1,5 +1,22 @@
 import { useState } from "react";
 
+// ✅ Define the props for Card component
+type CardProps = {
+  title: string;
+  value: string;
+};
+
+// ✅ Card component
+function Card({ title, value }: CardProps) {
+  return (
+    <div className="bg-white dark:bg-gray-800 p-4 rounded shadow">
+      <h3 className="text-sm text-gray-500 dark:text-gray-400">{title}</h3>
+      <p className="text-xl font-bold mt-1">{value}</p>
+    </div>
+  );
+}
+
+// ✅ Main App component
 export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
@@ -7,25 +24,44 @@ export default function App() {
   return (
     <div className={darkMode ? "dark" : ""}>
       <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
-
+        
         {/* Sidebar */}
-        <div className={`hidden md:flex flex-col bg-gray-800 text-white h-screen transition-all duration-300 ${sidebarOpen ? "w-64" : "w-16"}`}>
-          <div className="p-4 text-xl font-bold">{sidebarOpen ? "Dashboard" : ""}</div>
+        <div
+          className={`hidden md:flex flex-col bg-gray-800 text-white h-screen transition-all duration-300 ${
+            sidebarOpen ? "w-64" : "w-16"
+          }`}
+        >
+          <div className="p-4 text-xl font-bold">
+            {sidebarOpen ? "Dashboard" : ""}
+          </div>
           <nav className="p-4 space-y-2">
-            <button className="hover:bg-gray-700 p-2 rounded w-full text-left">{sidebarOpen ? "🏠 Home" : "🏠"}</button>
-            <button className="hover:bg-gray-700 p-2 rounded w-full text-left">{sidebarOpen ? "📊 Analytics" : "📊"}</button>
-            <button className="hover:bg-gray-700 p-2 rounded w-full text-left">{sidebarOpen ? "⚙️ Settings" : "⚙️"}</button>
+            <button className="hover:bg-gray-700 p-2 rounded w-full text-left">
+              {sidebarOpen ? "🏠 Home" : "🏠"}
+            </button>
+            <button className="hover:bg-gray-700 p-2 rounded w-full text-left">
+              {sidebarOpen ? "📊 Analytics" : "📊"}
+            </button>
+            <button className="hover:bg-gray-700 p-2 rounded w-full text-left">
+              {sidebarOpen ? "⚙️ Settings" : "⚙️"}
+            </button>
           </nav>
         </div>
 
         {/* Main Area */}
         <div className="flex-1 flex flex-col">
-
           {/* Header */}
           <header className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
-            <button onClick={() => setSidebarOpen(!sidebarOpen)} className="text-2xl">☰</button>
+            <button
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className="text-2xl"
+            >
+              ☰
+            </button>
             <h1 className="text-xl font-semibold">My Dashboard</h1>
-            <button onClick={() => setDarkMode(!darkMode)} className="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded">
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded"
+            >
               {darkMode ? "☀️ Light" : "🌙 Dark"}
             </button>
           </header>
@@ -43,20 +79,4 @@ export default function App() {
       </div>
     </div>
   );
-}
-
-// Simple Card Component
-type CardProps = {
-  title: string;
-  value: string;
-};
-
-function Card({ title, value }: CardProps) {
-  return (
-    <div className="bg-white dark:bg-gray-800 p-4 rounded shadow">
-      <h3 className="text-sm text-gray-500 dark:text-gray-400">{title}</h3>
-      <p className="text-xl font-bold mt-1">{value}</p>
-    </div>
-  );
-}
 }
