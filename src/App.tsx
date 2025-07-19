@@ -20,7 +20,7 @@ export default function App() {
 
         {/* Main Area */}
         <div className="flex-1 flex flex-col">
-          
+
           {/* Header */}
           <header className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
             <button onClick={() => setSidebarOpen(!sidebarOpen)} className="text-2xl">☰</button>
@@ -46,11 +46,17 @@ export default function App() {
 }
 
 // Simple Card Component
-function Card({ title, value }) {
+type CardProps = {
+  title: string;
+  value: string;
+};
+
+function Card({ title, value }: CardProps) {
   return (
     <div className="bg-white dark:bg-gray-800 p-4 rounded shadow">
       <h3 className="text-sm text-gray-500 dark:text-gray-400">{title}</h3>
       <p className="text-xl font-bold mt-1">{value}</p>
     </div>
   );
+}
 }
