@@ -1,13 +1,7 @@
-import { useState } from "react";
-
-// ✅ Define the props for Card component
-type CardProps = {
-  title: string;
-  value: string;
-};
+import React, { useState } from "react";
 
 // ✅ Card component
-function Card({ title, value }: CardProps) {
+function Card({ title, value }) {
   return (
     <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl">
       <h3 className="text-sm text-gray-500 dark:text-gray-400">{title}</h3>
